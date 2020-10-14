@@ -680,7 +680,7 @@ app.post("/edit/:variable",function(req,res){
   },
     function(err){
       if(!err){
-        res.redirect('/');
+        res.redirect('/userprofile/'+user.username);
       }else{
         console.log(err);
       }
@@ -722,6 +722,35 @@ app.post('/bugpage/:id', function(req, res) {
         }
     });
 });
+
+app.get("/editbug/:id",function(req,res){
+  if(req.isAuthenticated()){
+  const title = req.params.id;
+
+  bug.findOne({bugId: title}, function(err, foundBug){
+    if(err){
+      console.log(err);
+    }else{
+      console.log(foundBug);
+      res.render("bugpage-edit", {bug: foundBug, name: req.user.name,username: req.user.username,role: req.user.role})
+    }
+  })
+}else{
+  res.redirect("/");
+}
+})
+
+app.post("/editbug/:id",function(req,res) {
+  console.log(req.body);
+  bug.findOneAndUpdate( { bugId: req.params.id  },{$set : {status: req.body.status}}, function(err){
+      if(!err){
+        res.redirect('/');
+      }else{
+        console.log(err);
+      }
+    }
+  )
+})
 
 
 

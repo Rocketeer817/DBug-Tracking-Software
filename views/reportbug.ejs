@@ -127,7 +127,7 @@
           <select class="form-control" name="category" id="inputBugCategory" required>
             <option value="" disabled selected>Choose one category...</option>
             <% for(let x=0; x< texts.length-1; x++){  %>
-              <option value="1"> <%= texts[x] %> </option>
+              <option value="<%=texts[x]%>"> <%= texts[x] %> </option>
             <%} %>
           </select>
         </div>
@@ -136,10 +136,10 @@
         <label for="inputBugSeverity" class="col-sm-2 col-form-label">Bug Severity</label>
         <div class="col-sm-4">
           <select class="form-control" name="severity" id="inputBugSeverity" required>
-            <option name value="" disabled selected>Choose one...</option>
-            <option value="l">Low</option>
-            <option value="l">Medium</option>
-            <option value="l">High</option>
+            <option value="" disabled selected>Choose one...</option>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
           </select>
         </div>
       </div>

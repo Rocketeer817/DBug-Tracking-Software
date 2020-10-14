@@ -93,10 +93,10 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Welcome <%= name %>
+              Welcome <%=name%>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="/userprofile/<%=username %>">My Profile</a>
+              <a class="dropdown-item" href="/userprofile/<%=username%>">My Profile</a>
               <a class="dropdown-item" href="/logout">Logout</a>
             </div>
           </li>
@@ -109,71 +109,48 @@
 
   <div class="container" style="margin-top:40px; border: 10px solid;">
     <h2 class="">Bug Details</h2>
-    <table class="table" id="basic_bug_details">
-      <tbody>
-        <tr>
-          <th width="11%">Project Id</th>
-          <td width="22%"> <%= bug.projectId %> </td>
-          <th width="11%">Project Name</th>
-          <td width="22%"><%= bug.project %></td>
-          <th width="11%">Status</th>
-          <td width="22%"><%= bug.status %></td>
-        </tr>
-        <tr>
-          <th width="11%">Bug Id</th>
-          <td width="22%"><%= bug.bugId %></td>
-          <th width="11%">Category</th>
-          <td width="22%"><%= bug.category %></td>
-          <th width="11%">Severity</th>
-          <td width="22%"><%= bug.severity %></td>
-        </tr>
-        <tr>
-          <th width="11%">Reported By</th>
-          <td width="22%"><%= bug.reportedBy %></td>
-          <th width="11%">Opened Date</th>
-          <td width="22%"><%= bug.openedDate %></td>
-          <th width="11%">Due Date</th>
-          <td width="22%"><%= bug.dueDate %></td>
-        </tr>
-      </tbody>
-    </table>
-
-    <a href="/editbug/<%=bug.bugId%>" class="btn btn-primary">
-      <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-      <span><strong>Edit</strong></span>
-    </a>
-
-  </div>
-
-  <div class="container" style="margin-top: 40px;">
-    <form class="add_comment_form" post="/bugpage/<%=bug.bugId %>" method="post">
-      <div class="form-group row" >
-        <label class="col-sm-2 col-form-label" for="add_comment">Comment</label>
-
-        <textarea class="form-control col-sm-8" name="comment" rows="2" required></textarea>
-        <button class="col-sm-2 btn btn-primary btn-sm" type="submit">Submit</button>
-
-      </div>
+    <form action="/editbug/<%=bug.bugId%>" method="post">
+      <table class="table" id="basic_bug_details">
+        <tbody>
+          <tr>
+            <th width="11%">Project Id</th>
+            <td width="22%"><%=bug.projectId%> </td>
+            <th width="11%">Project Name</th>
+            <td width="22%"><%=bug.project%></td>
+            <th width="11%">
+              <label for="status">Status</label>
+            </th>
+            <td width="22%">
+              <select class="form-control" name="status" id="status">
+                <option value="" disabled selected>...</option>
+                <option value="To do">To do</option>
+                <option value="In progress">In progress</option>
+                <option value="In review">In review</option>
+                <option value="Fixed">Fixed</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <th width="11%">Bug Id</th>
+            <td width="22%"><%=bug.bugId%></td>
+            <th width="11%">Category</th>
+            <td width="22%"><%=bug.category%></td>
+            <th width="11%">Severity</th>
+            <td width="22%"><%=bug.severity%></td>
+          </tr>
+          <tr>
+            <th width="11%">Reported By</th>
+            <td width="22%"><%=bug.reportedBy%></td>
+            <th width="11%">Opened Date</th>
+            <td width="22%"><%=bug.openedDate%></td>
+            <th width="11%">Due Date</th>
+            <td width="22%"><%=bug.dueDate%> </td>
+          </tr>
+        </tbody>
+      </table>
+      <button type="submit" class="btn btn-primary">Submit</button>
     </form>
   </div>
-
-  <div class="container">
-    <ul class="list-group">
-    <%  bug.comments.forEach(function(details){ %>
-        <li class="list-group-item">
-          <div>
-            <img class="img-valign" src="images/logo.png" alt="avatar" />
-            <span class="text1"><small><strong><%=details.commentname%></strong></small></span>
-            <span class="text1"><small>8-Oct-2020 11:00 am</small></span>
-            <br>
-            <span class="text1"><%=details.comment%></span>
-          </div>
-        </li>
-    <%  }); %>
-    </ul>
-  </div>
-
-
 
 </body>
 

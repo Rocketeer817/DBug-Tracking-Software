@@ -153,8 +153,7 @@
           <th onclick="sortTable(3)" scope="col">Severity</th>
           <th onclick="sortTable(4)" scope="col">Opened Date</th>
           <th onclick="sortTable(5)" scope="col">Due Date</th>
-          <th scope="col">Developers Assigned</th>
-          <th scope="col">Testers Assigned</th>
+          <th scope="col">Reported By</th>
           <th onclick="sortTable(8)" scope="col">Status</th>
         </tr>
       </thead>
@@ -167,7 +166,6 @@
           <td><%=details.severity %></td>
           <td><%=details.openedDate %></td>
           <td><%=details.dueDate %></td>
-          <td><%=details.assignedTo %></td>
           <td><%=details.reportedBy %></td>
           <td><%=details.status %></td>
         </tr>
