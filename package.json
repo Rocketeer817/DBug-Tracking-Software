@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Team-Dynamic/Bug_Tracking_Software.git"
+    "url": "git+https://github.com/Team-Dynamic/DBug_Tracking_Software.git"
   },
   "author": "Ayush",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Team-Dynamic/Bug_Tracking_Software/issues"
+    "url": "https://github.com/Team-Dynamic/DBug_Tracking_Software/issues"
   },
-  "homepage": "https://github.com/Team-Dynamic/Bug_Tracking_Software#readme",
+  "homepage": "https://github.com/Team-Dynamic/DBug_Tracking_Software#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
     "connect-flash": "^0.1.1",
