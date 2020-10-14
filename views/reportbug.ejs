@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Report Bug</title><!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+  <!--===============================================================================================-->
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Alata|Josefin+Sans|Maven+Pro&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#563d7c">
+
+  <link rel="stylesheet" href="css/sidebar.css">
+  <link rel="stylesheet" href="css/master.css">
+
+  <!--===============================================================================================-->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!--===============================================================================================-->
+
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+  <style>
+        /* Modify the background color */
+
+        .navbar-custom {
+            background-color: #0f3057;
+        }
+        /* Modify brand and text color */
+
+        .navbar-custom .navbar-brand,
+        .navbar-custom .navbar-text {
+            color: white;
+        }
+
+        .btn-primary, .custom-file{
+          margin-left: 135px;
+        }
+    </style>
+
+    <script>
+      $(document).ready(function() {
+        $("#myinput").on("keyup", function() {
+          var value = $(this).val().toLowerCase();
+          $("#card div").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+
+          });
+        });
+      });
+    </script>
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body class="text-center">
+  <div class="sidebar_btn">
+    <span class="fas fa-bars"></span>
+  </div>
+  <nav class="sidebar">
+    <div class="text">
+      Menu</div>
+    <ul>
+      <li><a href="/testerhomepage">Home</a></li>
+      <li><a href="/projectlisttester">Project List</a></li>
+      <li class="active"><a href="/reportbug">Report Bug</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+      <a class="navbar-brand" href="/testerhomepage"><img src="images/logo.png" width="30" height="30" alt="" loading="lazy">
+        Dynamic Bug Tracker System
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Welcome <%=name%>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/userprofile/<%=username%>">My Profile</a>
+              <a class="dropdown-item" href="/logout">Logout</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <div class="container">
+    <h2 class="">Report Bug</h2>
+    <form class="report_bug" action="/reportbug" method="post">
+      <div class="form-group row">
+        <label for="inputProjectId" class="col-sm-2 col-form-label">Project Id</label>
+        <div class="col-sm-4">
+          <input type="text" name="projectId" class="form-control" id="inputProjectId" required autofocus>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputBugCategory" class="col-sm-2 col-form-label">Bug Category</label>
+        <div class="col-sm-4">
+          <select class="form-control" name="category" id="inputBugCategory" required>
+            <option value="" disabled selected>Choose one category...</option>
+            <% for(let x=0; x< texts.length-1; x++){  %>
+              <option value="1"> <%= texts[x] %> </option>
+            <%} %>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputBugSeverity" class="col-sm-2 col-form-label">Bug Severity</label>
+        <div class="col-sm-4">
+          <select class="form-control" name="severity" id="inputBugSeverity" required>
+            <option name value="" disabled selected>Choose one...</option>
+            <option value="l">Low</option>
+            <option value="l">Medium</option>
+            <option value="l">High</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputBugId" class="col-sm-2 col-form-label">Bug Id</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" name="bugId" id="inputBugId" required>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="report_date" class="col-sm-2 col-form-label">Reported Date</label>
+        <div class="col-sm-4">
+          <input type="date" class="form-control" name="openedDate" id="report_date" placeholder="..." required>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="report_due_date" class="col-sm-2 col-form-label">Due Date</label>
+        <div class="col-sm-4">
+          <input type="date" class="form-control" name="dueDate" id="report_due_date" placeholder="..." required>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="report_bug_description" class="col-sm-2 col-form-label">Description</label>
+        <div class="col-sm-4">
+          <textarea class="form-control" name="description" id="report_bug_description" rows="3"></textarea>
+        </div>
+      </div>
+      <div class="custom-file form-group row">
+          <label class="custom-file-label col-sm-5" for="CustomFile">Choose file...</label>
+          <input type="file" accept="image/jpeg image/x-png" class="custom-file-input" id="CustomFile" required>
+          <div class="invalid-feedback">Invalid Format</div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-4">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <script>
+// Add the following code if you want the name of the file appear on select
+$(".custom-file-input").on("change", function() {
+  var fileName = $(this).val().split("\\").pop();
+  $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+});
+</script>
+  <script>
+    $('.sidebar_btn').click(function() {
+      $(this).toggleClass("click");
+      $('.sidebar').toggleClass("show");
+    });
+    $('.feat-btn').click(function() {
+      $('nav ul .feat-show').toggleClass("show");
+      $('nav ul .first').toggleClass("rotate");
+    });
+    $('.serv-btn').click(function() {
+      $('nav ul .serv-show').toggleClass("show1");
+      $('nav ul .second').toggleClass("rotate");
+    });
+    $('nav ul li').click(function() {
+      $(this).addClass("active").siblings().removeClass("active");
+    });
+  </script>
+
+</body>
+
+</html>
